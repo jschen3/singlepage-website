@@ -1,0 +1,26 @@
+<nav>
+	<div class="width">
+    	<ul class="sf-menu dropdown">
+	        <li class="selected"><a href="index.html">Home</a></li>
+	        <li><a href="resume.html">Resume</a></li>
+		      <li><a href="projects.html">Projects</a></li>
+	        <li><a href="codingteasers.html">Coding Teasers</a></li>
+	        <li><a href="aboutme.html">About Me</a></li>
+	        <li>
+	       		<div id="status">{{statusMessage}}</div>
+	                <button type="button" 
+	                	class="btn 	btn-primary btn-large" 
+	                	ng-show="!authenticated" 
+	                	ng-click="login()">Login with Facebook
+	                </button>
+	                <button type="button" 
+	                	class="btn btn-primary btn-large"
+	                	ng-show="authenticated"
+	                	ng-click="logout()">
+	                	Logout
+	                </button>
+	        </li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+</nav>

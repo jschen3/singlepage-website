@@ -1,0 +1,34 @@
+<div id="body" class="width">
+	<section id="content" class="two-column with-right-sidebar">
+        <article ng-repeat="article in articles.slice(((currentPage-1)*3), ((currentPage)*3))">
+            <h2>{{article.title}}</h2>
+            <div class="article-time">Posted on
+                <time datetime="{{article.dateNumbers}}">
+                    {{article.dateText}}
+                </time>
+                <p class="article-p">{{article.blurbText}}</p>
+                <p class="article-button-p">
+                    <a href="{{article.url}}" class="article-button button">Read More</a>
+                </p>
+            </div>
+        </article>
+        <ul class="pagination">
+            <li><a href="#" ng-click="paginationSelected(-2)">Previous</a></li>
+            <li ng-repeat="i in styleArray track by $index" ng-click="paginationSelected($index+1)" ng-class="i"><a href="#">{{$index+1}}</a></li>
+            <li><a href="#" ng-click="paginationSelected(-1)">Next</a></li>
+        </ul>
+    </section>
+    <aside class="sidebar big-sidebar right-sidebar">
+        <ul>
+           <li>
+                <h4>Archives</h4>
+                <ul class="blocklist">
+                    <li><a class="selected sidebar-link" href="index.html">Homepage</a></li>
+                    <li ng-repeat="month in months"><a class="sidebar-link" href="{{month.url}}">{{month.month}}</a></li>
+                </ul>
+            </li>
+            <li>
+        </ul>
+    </aside>
+    <div class="clear"></div>
+</div>

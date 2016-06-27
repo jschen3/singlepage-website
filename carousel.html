@@ -1,0 +1,21 @@
+<div class="width carousel center">
+    <div>
+        <uib-carousel>
+            <uib-slide ng-repeat="slide in slides" ng-model="slide">
+                <div>
+                    <div class="carousel-left">
+                        <img class="slide-image" ng-src="{{slide.imagePath}}"/>
+                    </div>
+                    <div class="carousel-right">
+                        <h2>{{slide.title}}</h2>
+                        <p>{{slide.text}}</p>
+                        <p>
+                            <a ng-if="slide.readMoreSlide" href="{{slide.readMoreUrl}}" class="button">Read More</a>
+                            <a ng-repeat="link in slide.links" href="{{link.url}}" class="button" ng-bind="link.text"></a>
+                        </p>
+                    </div>
+                </div>
+            </uib-slide>
+        </uib-carousel>
+    </div>
+</div>
