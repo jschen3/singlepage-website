@@ -1,0 +1,11 @@
+
+<h2 ng-bind="article.title"></h2>
+<div class="article-time">Posted on
+    <time datetime="{{article.dateNumber}}">{{article.dateText}}</time>
+</div>
+<div>
+    <div ng-repeat="articleComponent in article.articleComponents">
+        <img ng-repeat="image in articleComponent.images" ng-src="{{imageAppend}}{{image}}" class="article-image"/>
+        <p ng-repeat="text in articleComponent.texts" class="article-text">{{text}}</p>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 /*
  * Factory to obtain articles. Also retrieves the image append to retrieve images in articles.
  */
-angular.module('articleapp').factory('articleFactory',['$q', '$http', 'ARTICLE_URL','IMAGE_URL',
+angular.module('ArticleCtrl').factory('ArticleFactory',['$q', '$http', 'ARTICLE_URL','IMAGE_URL',
 	 function($q, $http, articleUrl, imageUrl){
 	 	var _article;
 	 	var _imageAppend;
