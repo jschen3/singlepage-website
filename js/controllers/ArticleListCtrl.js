@@ -3,7 +3,7 @@ angular.module('ArticleListCtrl',[])
 	 	function($scope, ArticleListFactory){
 	ArticleListFactory.initStyleArray().then(function(response){
         $scope.styleArray=response;
-        console.log($scope.styleArray);
+        //console.log($scope.styleArray);
     });
     /*
      * Calls the articleFactory to retrieve the list of articles.

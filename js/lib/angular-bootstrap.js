@@ -4527,9 +4527,9 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
    *     $tooltipProvider.options( { placement: 'left' } );
    *   });
    */
-	this.options = function(value) {
-		angular.extend(globalOptions, value);
-	};
+  this.options = function(value) {
+    angular.extend(globalOptions, value);
+  };
 
   /**
    * This allows you to extend the set of trigger mappings available. E.g.:
