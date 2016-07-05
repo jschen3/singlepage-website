@@ -1,0 +1,22 @@
+<div ng-controller="ProjectCtrl" class="width project-body">
+	<article ng-repeat="project in projects">
+        <div class="project-div">	
+    		<div class="project-text">
+    			<h2 ng-bind="project.title"></h2>
+    			<p class="project-description">
+                    {{project.summary}}
+                </p>
+                <p class="project-description">
+                    Technologies: {{project.technologies}}
+                </p>
+                <div style="float: left">
+                    <p ng-if="project.hasDemoLink">Demo Link:<a ng-if="project.hasDemoLink" class="link" href="{{project.demoLink}}"> {{project.demoLink}}</a></p>
+                    <a class="project-button" href="{{project.github}}">github</a>          
+                </div>
+            </div>
+            <div class="project-image">
+                <img style="float:right" ng-src="{{imageUrl}}/{{project.locator}}/{{project.image}}" />
+            </div>
+        </div>
+	</article>
+</div>

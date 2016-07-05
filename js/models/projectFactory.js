@@ -1,4 +1,4 @@
-angular.module('projectapp').factory('projectFactory', ['$q', '$http', 'PROJECT_URL', 'IMAGE_URL',
+angular.module('ProjectCtrl').factory('ProjectFactory', ['$q', '$http', 'PROJECT_URL', 'IMAGE_URL',
 	function($q, $http, projectUrl, imageUrl){
 		var _projects;
 		var _imageAppend;
