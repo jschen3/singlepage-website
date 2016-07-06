@@ -1,11 +1,11 @@
 <nav>
 	<div class="width">
     	<ul class="sf-menu dropdown">
-	        <li class="selected"><a href="#/">Home</a></li>
-	        <li><a href=#resume>Resume</a></li>
-		      <li><a href="#projects">Projects</a></li>
-	        <li><a href="codingteasers.html">Coding Teasers</a></li>
-	        <li><a href="#aboutme">About Me</a></li>
+	        <li ng-class="styles[0]"><a ng-click="menuClicked('0')">Home</a></li>
+	        <li ng-class="style[1]"><a ng-click="menuClicked('1')">Resume</a></li>
+		      <li ng-class="styles[2]"><a ng-click="menuClicked('2')">Projects</a></li>
+	        <li ng-class="styles[3]"><a ng-click="menuClicked('3')">Coding Teasers</a></li>
+	        <li ng-class="styles[4]"><a ng-click="menuClicked('4')">About Me</a></li>
 	        <li>
 	       		<div id="status">{{statusMessage}}</div>
 	                <button type="button" 

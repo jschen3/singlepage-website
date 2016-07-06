@@ -1,5 +1,5 @@
-angular.module('CarouselCtrl', ['ngAnimate','ngTouch','ui.bootstrap', 'Constants']).controller('CarouselCtrl',['$scope', 'SlideFactory', '$timeout','$animate',
-	function($scope, slideFactory, $timeout, $animate){
+angular.module('CarouselCtrl', ['ngAnimate','ngTouch','ui.bootstrap', 'Constants']).controller('CarouselCtrl',['$scope', 'SlideFactory',
+	function($scope, slideFactory){
 		
 		slideFactory.getSlides().then(function(response){
         	$scope.slides=response;
