@@ -1,6 +1,5 @@
-angular.module('NavBarCtrl',['ngRoute','LoginFactory']).controller('NavBarCtrl',['$scope', '$location','LoginFactory',
-	function(loginFactory, $location, $scope){
-	$scope.authenticated=loginFactory.getAuthenticated();
+angular.module('NavBarCtrl',['ngRoute']).controller('NavBarCtrl',['$location','$scope',
+	function($location, $scope){
 	$scope.styles=[];
 	for(i=0;i<5;i++){
 		$scope.styles[i]="";
@@ -31,13 +30,5 @@ angular.module('NavBarCtrl',['ngRoute','LoginFactory']).controller('NavBarCtrl',
 				$location.path('/');
 				break;
 		}
-	}
-	$scope.login = function(){
-		loginFactory.login();
-		$scope.authenticated=loginFactory.getAuthenticated();
-	}
-	$scope.logout = function(){
-		loginFactory.login();
-		$scope.authenticated=loginFactory.getAuthenticated();
-	}	
+	};
 }]);

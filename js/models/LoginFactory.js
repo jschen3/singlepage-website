@@ -1,53 +1,51 @@
-angular.module('LoginFactory',['facebook']).config(
+angular.module('App',['facebook']).config(
     ['FacebookProvider', function(FacebookProvider){
         var myAppId='1746903815593556';
         FacebookProvider.init(myAppId);
 }])
-    .factory('LoginFactory', ['$scope','$timeout','Facebook',
-     function($scope, $timeout, Facebook){
-        loginFactory= {};
-        $scope.user = {};
-        $scope.authenticated=false;
-        $scope.statusMessage='';
-        $scope.$watch(
+    .controller('LoginCtrl', ['$rootScope','$timeout','Facebook',
+     function($rootScope, $timeout, Facebook){
+        $rootScope.user = {};
+        $rootScope.authenticated=false;
+        $rootScope.statusMessage='';
+        $rootScope.$watch(
             function(){
                 return Facebook.isReady();
             },
             function(newVal){
                 if (newVal)
-                    $scope.facebookReady=true;
+                    $rootScope.facebookReady=true;
             }
         );
-        loginFactory.login = function(){
+        $rootScope.login = function(){
             Facebook.login(function(response) {
                 if (response.status == 'connected') {
-                    $scope.authenticated = true;
+                    $rootScope.authenticated = true;
                     Facebook.api('/me', function(response) {
-                        $scope.$apply(function() {
-                            $scope.user = response;
-                            console.log($scope.user);
-                            $scope.statusMessage='Welcome, '+$scope.user.name;
-                            document.getElementById('status').innerHTML = 'Welcome, '+$scope.user.name;;
+                        $rootScope.$apply(function() {
+                            $rootScope.user = response;
+                            console.log($rootScope.user);
+                            $rootScope.statusMessage='Welcome, '+$rootScope.user.name;
+                            document.getElementById('status').innerHTML = 'Welcome, '+$rootScope.user.name;;
                         });
                     });
                 }
-        
+
             });
         };
-        loginFactory.logout = function() {
+        $rootScope.logout = function() {
             Facebook.logout(function() {
-                $scope.$apply(function() {
-                    $scope.user   = {};
-                    $scope.statusMessage='';
-                    $scope.authenticated = false;  
+                $rootScope.$apply(function() {
+                    $rootScope.user   = {};
+                    $rootScope.statusMessage='';
+                    $rootScope.authenticated = false;
                 });
             });
         };
-        loginFactory.getUserName = function(){
-            return $scope.user.name;
-        }
-        loginFactory.getAuthenticated = function(){
-            return $scope.authenticated;
-        }
-        return loginFactory;
+        $rootScope.getUserName = function(){
+            return $rootScope.user.name;
+        };
+        $rootScope.getAuthenticated = function(){
+            return $rootScope.authenticated;
+        };
 }]);
