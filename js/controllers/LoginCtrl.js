@@ -8,13 +8,13 @@ angular.module('App',['facebook']).config(
         $rootScope.user = {};
         $rootScope.authenticated=false;
         $rootScope.statusMessage='';
-        $rootScope.$watch(
+        $scope.$watch(
             function(){
                 return Facebook.isReady();
             },
             function(newVal){
                 if (newVal)
-                    $rootScope.facebookReady=true;
+                    $scope.facebookReady=true;
             }
         );
         $rootScope.login = function(){
@@ -22,11 +22,10 @@ angular.module('App',['facebook']).config(
                 if (response.status == 'connected') {
                     $rootScope.authenticated = true;
                     Facebook.api('/me', function(response) {
-                        $rootScope.$apply(function() {
+                        $Scope.$apply(function() {
                             $rootScope.user = response;
                             console.log($rootScope.user);
                             $rootScope.statusMessage='Welcome, '+$rootScope.user.name;
-                            document.getElementById('status').innerHTML = 'Welcome, '+$rootScope.user.name;;
                         });
                     });
                 }
