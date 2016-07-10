@@ -24,9 +24,9 @@
 	</div>
 </div>
 <ul class="pagination" style="margin-top: 0px">
-        <li><a href="#" ng-click="paginationSelected(-2)">Previous</a></li>
-        <li ng-repeat="i in styleArray track by $index" ng-click="paginationSelected($index+1)" ng-class="i"><a href="#">{{$index+1}}</a></li>
-        <li><a href="#" ng-click="paginationSelected(-1)">Next</a></li>
+        <li><a ng-click="paginationSelected(-2)">Previous</a></li>
+        <li ng-repeat="i in styleArray track by $index" ng-click="paginationSelected($index+1)" ng-class="i"><a>{{$index+1}}</a></li>
+        <li><a ng-click="paginationSelected(-1)">Next</a></li>
 </ul>
 
 </div>
