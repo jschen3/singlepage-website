@@ -1,0 +1,32 @@
+<div class="self-comment" style="height: 145px; border-bottom: 2px solid black" ng-show="authenticated">
+<div>COMMENTS:</div>
+<div style="float: left; padding-right: 10px"><img style="height: 100px; width: auto" src="images/sample-icon.jpg" style="size: 200%"></div>
+<div><textarea style="padding-left: 10px;width:650px; height: 90px" placeholder="Add a public comment" ng-model="$parent.text"></textarea>
+</div>
+<div style="width: 700px"><div style="float:right";><button class="comment-button" ng-click="post()">Post</button><button class="comment-button" ng-click="cancel()">Cancel</button></div>
+</div>
+</div>
+<div style="height:20px"></div>
+<div>
+<div ng-repeat="comment in comments.slice(((currentPage-1)*5), ((currentPage)*5))" style="height: 120px">
+	<div style="float: left; padding-right: 10px"><!--<img ng-src="comment.image"/>-->
+	</div>
+	<div style="height: 25px">
+		<div style="width: 750px">
+			<div style="float:left">{{comment.author}}</div>
+			<div style="float: right">{{comment.date}}</div>
+		</div>
+	</div>
+	<div style="width:800px">
+		<p>
+			{{comment.text}}
+		</p>
+	</div>
+</div>
+<ul class="pagination" style="margin-top: 0px">
+        <li><a href="#" ng-click="paginationSelected(-2)">Previous</a></li>
+        <li ng-repeat="i in styleArray track by $index" ng-click="paginationSelected($index+1)" ng-class="i"><a href="#">{{$index+1}}</a></li>
+        <li><a href="#" ng-click="paginationSelected(-1)">Next</a></li>
+</ul>
+
+</div>

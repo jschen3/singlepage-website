@@ -5,7 +5,8 @@ var app=angular.module('App',
 	 'ArticleListCtrl', 
 	 'ArticleCtrl',
 	 'ProjectCtrl',
-	 'facebook'
+	 'facebook',
+	 'CommentCtrl'
 	 ]);
 app.config(['$routeProvider', function($routeProvider, $http){
 	$routeProvider.when('/', {
@@ -32,8 +33,8 @@ app.config(['FacebookProvider', function(FacebookProvider){
     FacebookProvider.init(myAppId);
 }]).controller('FacebookCtrl', ['$scope', '$rootScope', '$timeout', 'Facebook', '$location',
 	function($scope, $rootScope, $timeout, Facebook, $location){
-		$scope.user = {};
-		$scope.authenticated=false;
+		$rootScope.user = {};
+		$rootScope.authenticated=false;
 		$scope.statusMessage='';
 		$scope.$watch(
 			function(){
@@ -47,10 +48,10 @@ app.config(['FacebookProvider', function(FacebookProvider){
         $scope.login = function(){
             Facebook.login(function(response) {
                 if (response.status == 'connected') {
-                    $scope.authenticated = true;
+                    $rootScope.authenticated = true;
                     Facebook.api('/me', function(response) {
                         $scope.$apply(function() {
-                            $scope.user = response;
+                            $rootScope.user = response;
                             console.log($scope.user);
                             $scope.statusMessage='Welcome, '+$scope.user.name;
                         });
@@ -62,17 +63,17 @@ app.config(['FacebookProvider', function(FacebookProvider){
         $scope.logout = function() {
             Facebook.logout(function() {
                 $scope.$apply(function() {
-                    $scope.user   = {};
+                    $rootScope.user   = {};
                     $scope.statusMessage='';
-                    $scope.authenticated = false;
+                    $rootScope.authenticated = false;
                 });
             });
         };
         $scope.getUserName = function(){
-            return $scope.user.name;
+            return $rootScope.user.name;
         };
         $scope.getAuthenticated = function(){
-            return $scope.authenticated;
+            return $rootScope.authenticated;
         };
         $scope.styles=[];
 		for(i=0;i<5;i++){
