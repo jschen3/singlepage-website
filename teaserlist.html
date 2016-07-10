@@ -1,0 +1,22 @@
+<div class="body width">
+    <div class="teaser-title">
+    	<h1>Coding Teaser's Anthology</h1>
+    </div>
+    <div class="teaser-text">
+    As I do a lot of coding challenges for interviews and etc. I find them fun; so I thought I would start posting a few questions here. Hopefully my posting of the questions here will give other programmers insight on how to solve the problems and keep me up to shape in solving these questions in future interviews.
+    </div>
+    <div ng-controller="TeaserListCtrl" class="width teaser-body">
+   		<article ng-repeat="teaser in teasers">
+   			<div class="project-div">
+	   			<h2>{{teaser.title}}</h2>
+	   			<div class="teaser-time">Posted on <time>{{teaser.dateText}}</time>
+		   			<p class="teaser-p">{{teaser.summary}}</p>
+		   			<p class="teaser-p">Techniques: {{teaser.techniques}}</p>
+		   			<p class="article-button-p">
+		   				<a class="article-button button" href="{{teaser.url}}">Read More</a>
+		   			</p>
+		   		</div>
+		   	</div>
+   		</article> 
+    </div>
+</div>

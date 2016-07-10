@@ -1,4 +1,4 @@
-angular.module('teaserApp').factory('teaserFactory',['$q','$http','TEASER_URL',
+angular.module('TeaserCtrl').factory('TeaserFactory',['$q','$http','TEASER_URL',
  	function($q,$http,teaserUrl){
  		var _teaser;
  		var teaserFactory ={};

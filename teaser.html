@@ -1,0 +1,32 @@
+<div id="body" class="width" ng-controller="TeaserCtrl">
+    <h2>{{teaser.title}}</h2>
+    <div class="article-time">Posted on <time>{{teaser.dateText}}</time></div>
+    <div class="teaser-problem">
+        <p class="teaser-p"><b>Problem Statement:</b></p>
+        
+        <div ng-repeat="articleComponent in teaser.problem">
+            <p class="teaser-p" ng-repeat="text in articleComponent.texts">{{text}}</p>
+            <img ng-repeat="image in articleComponent.images"/>
+        </div>
+        
+    </div>
+    <div class="solution-button">
+        <a class="button" ng-bind="buttonText" ng-click="toggleSolution()"></a>
+    </div>
+    <div class="teaser-solution" ng-show="showSolution">
+       <div ng-repeat="component in teaser.solution">
+            <p ng-if="checkType(component.type,0)" class="teaser-p">{{component.content}}</p>
+            <div ng-if="checkType(component.type,2)" class="teaser-solution-code">
+                <pre><code class="language-java">
+{{component.content}}
+                </code></pre>
+
+            </div>
+            <img ng-if="checkType(component.type,3)" ng-src="{{component.content}}"/>
+           
+        </div>
+        
+    </div>
+</div>
+
+

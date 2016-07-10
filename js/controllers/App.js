@@ -1,12 +1,13 @@
 var app=angular.module('App',
 	['ngRoute',
-	 'NavBarCtrl', 
 	 'CarouselCtrl',
 	 'ArticleListCtrl', 
 	 'ArticleCtrl',
 	 'ProjectCtrl',
 	 'facebook',
-	 'CommentCtrl'
+	 'CommentCtrl',
+	 'TeaserListCtrl',
+	 'TeaserCtrl'
 	 ]);
 app.config(['$routeProvider', function($routeProvider, $http){
 	$routeProvider.when('/', {
@@ -21,12 +22,18 @@ app.config(['$routeProvider', function($routeProvider, $http){
 	when('/projects',{
 		templateUrl : 'projects.html'
 	}).
+	when('/teaserlist',{
+		templateUrl : 'teaserlist.html'
+	}).
+	when('/teaser/:param',{
+		templateUrl: 'teaser.html'
+	}).
 	when('/aboutme',{
 		templateUrl : 'aboutme.html'
 	}).
 	otherwise({
-    	redirectTo: '/'
-  	});
+		redirectTo: '/'
+	});
 }]);
 app.config(['FacebookProvider', function(FacebookProvider){
 	var myAppId='1746903815593556';
@@ -96,7 +103,7 @@ app.config(['FacebookProvider', function(FacebookProvider){
 					$location.path('/projects');
 					break;
 				case "3":
-					$location.path('/teasers');
+					$location.path('/teaserlist');
 					break;
 				case "4":
 					$location.path('/aboutme');
