@@ -1,6 +1,6 @@
 angular.module('CommentCtrl').factory('CommentFactory', ['$q','$http',
     function($q,$http){
-        var commentUrl="http://localhost:8080/comments"
+        var commentUrl="http://jimmy-chen.net:8080/Website/comments"
         var _comments;
         var _styleArray;
         var _currentPage = 1;
