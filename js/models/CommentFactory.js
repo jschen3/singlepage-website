@@ -1,6 +1,6 @@
 angular.module('CommentCtrl').factory('CommentFactory', ['$q','$http',
     function($q,$http){
-        var commentUrl="http://jimmy-chen.net:8080/Website/comments"
+        var commentUrl="http://localhost:8080/Website/comments"
         var _comments;
         var _styleArray;
         var _currentPage = 1;
@@ -15,8 +15,17 @@ angular.module('CommentCtrl').factory('CommentFactory', ['$q','$http',
         };
         commentFactory.addComments = function(comment, id){
                 var defer=$q.defer();
-                $http.post(commentUrl+"/"+id, comment).then(function(){
-                    defer.resolve();
+                // $http.post(commentUrl+"/"+id, comment).then(function(){
+                //     defer.resolve();
+                // });
+                // return defer.promise;
+                $http({
+                    method: 'POST',
+                    url: commentUrl + "/"+id,
+                    data: comment,
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
                 });
                 return defer.promise;
         };

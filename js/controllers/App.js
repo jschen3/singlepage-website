@@ -64,9 +64,9 @@ app.config(['FacebookProvider', function(FacebookProvider){
                         });
                     });
                 }
-
             });
         };
+
         $scope.logout = function() {
             Facebook.logout(function() {
                 $scope.$apply(function() {
