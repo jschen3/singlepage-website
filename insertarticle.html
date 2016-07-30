@@ -1,0 +1,56 @@
+<!doctype html>
+<html ng-app="insertArticleApp">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap-datepicker.css" type="text/css"/>
+	<script type="text/javascript" src="js/lib/angular.js"></script>
+	<script type="text/javascript" src="js/lib/angular-animate.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.js"></script>
+	<script type="text/javascript" src="js/controllers/insertArticleApp.js"></script>
+	<script type="text/javascript" src="js/lib/ng-file-upload-shim.js"></script>
+	<script type="text/javascript" src="js/lib/ng-file-upload.js"></script>
+	<script type="text/javascript" src="js/constants/constants.js"></script>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+<body>
+<div id="container" ng-controller="insertArticleController">
+	<div id="body" class="width">
+		<form>
+			<h2>Article Title</h2>
+			<fieldset class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" class="form-control" id="title"/><br ng-model="article.title">
+				<label for="blurb">Blurb:</label>
+				<textarea class="form-control" id="blurb" rows="4" ng-model="article.blurb">
+				</textarea>
+			</fieldset>
+			<h2>Article Content</h2>
+			<fieldset class="form-group" ng-repeat="component in article.components">
+				<div id="articleText">
+						<label for="articletext">Article Text:</label>
+						<textarea class="form-control" rows="4" ng-model="component.text">
+						</textarea>
+				</div>
+				<div id="articleImage">
+						<label for="articleimage">Article Image:</label>
+						<button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+          				accept="image/*" ngf-max-size="5MB">Select File</button>
+				</div>
+				<div id="articleCode">
+					<label for="articletext">Article Code:</label>
+						<textarea class="form-control" rows="4" ng-model="component.code">
+						</textarea>
+				</div>
+			</fieldset>
+			<button ng-click="moreContent()">Add More Content</button><br>
+			<div style="text-align: center">
+				<a class="button" ng-click="submitArticle()">Create Article</a>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
